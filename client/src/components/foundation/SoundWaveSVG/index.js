@@ -1,0 +1,1 @@
+export { SoundWaveSVG } from './SoundWaveSVG';

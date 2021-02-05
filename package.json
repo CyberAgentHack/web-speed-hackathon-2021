@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "license": "MPL-2.0",
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "start": "yarn workspace @web-speed-hackathon-2021/server start"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": "16.x.x"
+  }
+}

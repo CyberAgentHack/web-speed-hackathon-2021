@@ -1,0 +1,73 @@
+{
+  "private": true,
+  "name": "@web-speed-hackathon-2021/client",
+  "version": "0.0.1",
+  "license": "MPL-2.0",
+  "scripts": {
+    "analyze": "cross-env NODE_ENV=development webpack --analyze",
+    "prebuild": "rimraf ../dist",
+    "build": "cross-env NODE_ENV=development webpack",
+    "develop": "cross-env NODE_ENV=development webpack serve"
+  },
+  "dependencies": {
+    "buffer": "6.0.3",
+    "classnames": "2.3.1",
+    "core-js": "3.19.1",
+    "fast-average-color": "7.0.1",
+    "gifler": "github:themadcreator/gifler#v0.3.0",
+    "image-size": "1.0.0",
+    "jquery": "3.6.0",
+    "jquery-binarytransport": "1.0.0",
+    "lodash": "4.17.21",
+    "moment": "2.29.1",
+    "normalize.css": "8.0.1",
+    "omggif": "1.0.10",
+    "pako": "2.0.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-helmet": "6.1.0",
+    "react-router-dom": "6.0.2",
+    "regenerator-runtime": "0.13.9",
+    "standardized-audio-context": "25.3.15",
+    "tailwindcss": "2.2.19",
+    "wicg-inert": "3.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/preset-env": "7.16.4",
+    "@babel/preset-react": "7.16.0",
+    "@types/jquery": "3.5.9",
+    "@types/lodash": "4.14.177",
+    "@types/pako": "1.0.2",
+    "@types/react": "17.0.36",
+    "@types/react-dom": "17.0.11",
+    "@types/react-helmet": "6.1.4",
+    "@types/react-router-dom": "5.3.2",
+    "babel-loader": "8.2.3",
+    "cross-env": "7.0.3",
+    "css-loader": "6.5.1",
+    "html-webpack-plugin": "5.5.0",
+    "mini-css-extract-plugin": "2.4.5",
+    "postcss": "8.3.11",
+    "postcss-import": "14.0.2",
+    "postcss-loader": "6.2.0",
+    "postcss-preset-env": "7.0.1",
+    "rimraf": "3.0.2",
+    "style-loader": "3.3.1",
+    "webpack": "5.64.2",
+    "webpack-bundle-analyzer": "4.5.0",
+    "webpack-cli": "4.9.1",
+    "webpack-dev-server": "4.5.0"
+  },
+  "engines": {
+    "node": "16.x.x"
+  },
+  "typesync": {
+    "ignoreDeps": [
+      "dev"
+    ],
+    "ignorePackages": [
+      "core-js"
+    ]
+  }
+}
