@@ -1,0 +1,17 @@
+@import 'normalize.css';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './styles/webfont.css';
+
+body {
+  font-family: '源暎エムゴ', sans-serif;
+}
+
+.font-awesome {
+  height: 1em;
+  vertical-align: -0.125em;
+  width: 1em;
+}

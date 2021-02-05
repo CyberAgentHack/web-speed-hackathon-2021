@@ -1,0 +1,1 @@
+export { FontAwesomeIcon } from './FontAwesomeIcon';

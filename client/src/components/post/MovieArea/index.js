@@ -1,0 +1,1 @@
+export { MovieArea } from './MovieArea';
