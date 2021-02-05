@@ -1,0 +1,1 @@
+export { NewPostContainer } from './NewPostContainer';

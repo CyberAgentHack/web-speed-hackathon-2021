@@ -1,0 +1,1 @@
+export { SoundPlayer } from './SoundPlayer';

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "license": "UNLICENSED",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "start": "yarn workspace @web-speed-hackathon-2021/server start"
+  },
+  "engines": {
+    "node": "14.x.x"
+  }
+}
