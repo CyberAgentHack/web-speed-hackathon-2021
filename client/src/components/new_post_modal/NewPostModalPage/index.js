@@ -1,0 +1,1 @@
+export { NewPostModalPage } from './NewPostModalPage';

@@ -1,0 +1,73 @@
+{
+  "private": true,
+  "name": "@web-speed-hackathon-2021/client",
+  "license": "UNLICENSED",
+  "version": "0.0.1",
+  "scripts": {
+    "analyze": "cross-env NODE_ENV=development webpack --analyze",
+    "prebuild": "rimraf ../dist",
+    "build": "cross-env NODE_ENV=development webpack",
+    "develop": "cross-env NODE_ENV=development webpack serve"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "classnames": "^2.3.1",
+    "core-js": "^3.11.0",
+    "fast-average-color": "^6.4.0",
+    "gifler": "github:themadcreator/gifler#v0.3.0",
+    "image-size": "^1.0.0",
+    "jquery": "^3.6.0",
+    "jquery-binarytransport": "^1.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "normalize.css": "^8.0.1",
+    "omggif": "^1.0.10",
+    "pako": "^2.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.7",
+    "standardized-audio-context": "^25.1.15",
+    "tailwindcss": "^2.1.2",
+    "wicg-inert": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "@types/jquery": "^3.5.5",
+    "@types/lodash": "^4.14.168",
+    "@types/pako": "^1.0.1",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-helmet": "^6.1.1",
+    "@types/react-router-dom": "^5.1.7",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.5.0",
+    "postcss": "^8.2.12",
+    "postcss-import": "^14.0.1",
+    "postcss-loader": "^5.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "rimraf": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.35.1",
+    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "engines": {
+    "node": "14.x.x"
+  },
+  "typesync": {
+    "ignoreDeps": [
+      "dev"
+    ],
+    "ignorePackages": [
+      "core-js"
+    ]
+  }
+}
