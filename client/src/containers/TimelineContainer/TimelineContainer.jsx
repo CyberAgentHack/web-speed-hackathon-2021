@@ -18,11 +18,11 @@ const TimelineContainer = () => {
 
   React.useEffect(() => {
     (async () => {
-      const allTimeline = await fetchTimeline({ limit: undefined, offset: undefined });
-      setAllTimeline(allTimeline);
+      const timeline = await fetchTimeline({ limit: LIMIT, offset: offset + LIMIT });
+      setTimeline(timeline);
 
       // 初回は10件のみ表示する
-      setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
       setOffset((offset) => offset + LIMIT);
     })().finally(() => {
       setIsLoading(false);
@@ -31,8 +31,15 @@ const TimelineContainer = () => {
 
   // 画面最下部までスクロールしたときには、10件読み込む
   useRegisterOnReachBottom(() => {
-    setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
-    setOffset((offset) => offset + LIMIT);
+    setIsLoading(true);
+    (async () => {
+      const timeline = await fetchTimeline({ limit: LIMIT, offset: offset + LIMIT });
+      setTimeline(timeline);
+      // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      setOffset((offset) => offset + LIMIT);
+    })().finally(() => {
+      setIsLoading(false);
+    });
   }, [allTimeline, offset]);
 
   if (isLoading) {
