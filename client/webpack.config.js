@@ -10,7 +10,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
 const config = {
-  mode: 'none',
+  mode: 'production',
   entry: [
     'core-js',
     'regenerator-runtime/runtime',
@@ -38,6 +38,7 @@ const config = {
       },
       {
         test: /\.css$/i,
+        exclude: /node_modules/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader', options: { url: false } },
@@ -53,18 +54,18 @@ const config = {
       'window.jQuery': 'jquery',
       AudioContext: ['standardized-audio-context', 'AudioContext'],
     }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-    }),
+    // new webpack.EnvironmentPlugin({
+    //   NODE_ENV: 'development',
+    // }),
     new MiniCssExtractPlugin({
       filename: 'styles/main.css',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(SRC_PATH, './index.html'),
-      inject: false,
+      // inject: false,
     }),
   ],
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   devServer: {
     host: '0.0.0.0',
     port: 8080,
