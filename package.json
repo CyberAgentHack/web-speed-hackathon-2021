@@ -11,5 +11,10 @@
   },
   "engines": {
     "node": "14.x.x"
+  },
+  "devDependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webp": "^6.0.0"
   }
 }
