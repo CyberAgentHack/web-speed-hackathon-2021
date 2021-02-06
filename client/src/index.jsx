@@ -6,15 +6,26 @@ import { ActiveUserProvider } from './providers/ActiveUserProvider';
 import { ModalTypeProvider } from './providers/ModalTypeProvider';
 import { OnReachBottomProvider } from './providers/OnReachBottomProvider';
 
-window.addEventListener('load', () => {
-  ReactDOM.render(
-    <ActiveUserProvider>
-      <ModalTypeProvider>
-        <OnReachBottomProvider>
-          <AppContainer />
-        </OnReachBottomProvider>
-      </ModalTypeProvider>
-    </ActiveUserProvider>,
-    document.querySelector('#app'),
-  );
-});
+// window.addEventListener('load', () => {
+//   ReactDOM.render(
+//     <ActiveUserProvider>
+//       <ModalTypeProvider>
+//         <OnReachBottomProvider>
+//           <AppContainer />
+//         </OnReachBottomProvider>
+//       </ModalTypeProvider>
+//     </ActiveUserProvider>,
+//     document.querySelector('#app'),
+//   );
+// });
+
+ReactDOM.render(
+  <ActiveUserProvider>
+    <ModalTypeProvider>
+      <OnReachBottomProvider>
+        <AppContainer />
+      </OnReachBottomProvider>
+    </ModalTypeProvider>
+  </ActiveUserProvider>,
+  document.querySelector('#app'),
+);

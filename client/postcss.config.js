@@ -10,5 +10,5 @@ module.exports = {
       stage: 3,
     }),
   ],
-  map: true,
+  map: false,
 };
