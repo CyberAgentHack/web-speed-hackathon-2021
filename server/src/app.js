@@ -4,8 +4,20 @@ import session from 'express-session';
 
 import { apiRouter } from './routes/api';
 import { staticRouter } from './routes/static';
+import compression from 'compression';
 
 const app = Express();
+app.use(compression({filter: shouldCompress}))
+
+function shouldCompress(req, res) {
+  const url = req.url;
+  const doCompress = url.includes('css') || url.includes('js') || url === '/';
+  if(doCompress) {
+    return compression.filter(req, res);
+  } else {
+    return false;
+  }
+}
 
 app.set('trust proxy', true);
 
