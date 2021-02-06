@@ -16,7 +16,6 @@ const EXTENSION = 'webp';
 const router = Router();
 
 router.post('/images', async (req, res) => {
-  console.log('今います' + req.session.userId);
   if (req.session.userId === undefined) {
     throw new httpErrors.Unauthorized();
   }

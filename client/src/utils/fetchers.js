@@ -6,13 +6,11 @@ import { gzip } from 'pako';
  * @returns {Promise<ArrayBuffer>}
  */
 async function fetchBinary({ url }) {
-  const result = await $.ajax({
+  const res = await fetch(url, {
     method: 'GET',
-    url,
-    async: false,
-    dataType: 'binary',
-    responseType: 'arraybuffer',
   });
+  const result = await res.arrayBuffer();
+
   return result;
 }
 
@@ -22,12 +20,11 @@ async function fetchBinary({ url }) {
  * @returns {Promise<Post>}
  */
 async function fetchPost({ postId }) {
-  const result = await $.ajax({
+  const res = await fetch(`/api/v1/posts/${postId}`, {
     method: 'GET',
-    url: `/api/v1/posts/${postId}`,
-    dataType: 'json',
-    async: false,
   });
+  const result = await res.json();
+
   return result;
 }
 
@@ -47,12 +44,12 @@ async function fetchCommentsByPost({ postId, limit, offset }) {
     searchParams.append('offset', offset);
   }
 
-  const result = await $.ajax({
+  const res = await fetch(`/api/v1/posts/${postId}/comments`, {
     method: 'GET',
-    url: `/api/v1/posts/${postId}/comments`,
-    dataType: 'json',
-    async: false,
   });
+
+  const result = await res.json();
+
   return result;
 }
 
@@ -71,12 +68,12 @@ async function fetchTimeline({ limit, offset }) {
     searchParams.append('offset', offset);
   }
 
-  const result = await $.ajax({
+  const res = await fetch(`/api/v1/posts?${searchParams}`, {
     method: 'GET',
-    url: `/api/v1/posts?${searchParams}`,
-    dataType: 'json',
-    async: false,
   });
+
+  const result = await res.json();
+
   return result;
 }
 
@@ -96,12 +93,11 @@ async function fetchTimelineByUser({ userId, limit, offset }) {
     searchParams.append('offset', offset);
   }
 
-  const result = await $.ajax({
+  const res = await fetch(`/api/v1/users/${userId}/posts`, {
     method: 'GET',
-    url: `/api/v1/users/${userId}/posts`,
-    dataType: 'json',
-    async: false,
   });
+  const result = await res.json();
+
   return result;
 }
 
@@ -111,12 +107,11 @@ async function fetchTimelineByUser({ userId, limit, offset }) {
  * @returns {Promise<User>}
  */
 async function fetchUser({ userId }) {
-  const result = await $.ajax({
+  const res = await fetch(`/api/v1/users/${userId}`, {
     method: 'GET',
-    url: `/api/v1/users/${userId}`,
-    dataType: 'json',
-    async: false,
   });
+  const result = await res.json();
+
   return result;
 }
 
@@ -124,12 +119,15 @@ async function fetchUser({ userId }) {
  * @returns {Promise<User>}
  */
 async function fetchActiveUser() {
-  const result = await $.ajax({
+  const res = await fetch('/api/v1/me', {
     method: 'GET',
-    url: '/api/v1/me',
-    dataType: 'json',
-    async: false,
   });
+  const result = await res.json();
+
+  if (result.message === 'Unauthorized') {
+    return null;
+  }
+
   return result;
 }
 
@@ -143,18 +141,18 @@ async function fetchActiveUser() {
 async function sendRegister(params) {
   const uint8Array = new TextEncoder().encode(JSON.stringify(params));
   const compressed = gzip(uint8Array);
-  const result = await $.ajax({
+
+  const res = await fetch('/api/v1/signup', {
     method: 'POST',
-    url: '/api/v1/signup',
-    dataType: 'json',
-    data: compressed,
-    processData: false,
-    async: true,
+    body: compressed,
     headers: {
       'Content-Type': 'application/json',
       'Content-Encoding': 'gzip',
     },
   });
+
+  const result = await res.json();
+
   return result;
 }
 
@@ -167,19 +165,16 @@ async function sendRegister(params) {
 async function sendSignin(params) {
   const uint8Array = new TextEncoder().encode(JSON.stringify(params));
   const compressed = gzip(uint8Array);
-  const result = await $.ajax({
+  const result = await fetch('/api/v1/signin', {
     method: 'POST',
-    url: '/api/v1/signin',
-    dataType: 'json',
-    data: compressed,
-    processData: false,
-    async: true,
+    body: compressed,
     headers: {
       'Content-Type': 'application/json',
       'Content-Encoding': 'gzip',
     },
   });
-  return result;
+
+  return result.json();
 }
 
 /**
@@ -188,18 +183,14 @@ async function sendSignin(params) {
  * @returns {Promise<Movie>}
  */
 async function sendNewMovie({ movie }) {
-  const result = await $.ajax({
+  const result = await fetch('/api/v1/movies', {
     method: 'POST',
-    url: '/api/v1/movies',
-    dataType: 'json',
-    data: movie,
-    processData: false,
-    async: true,
+    body: movie,
     headers: {
       'Content-Type': 'application/octet-stream',
     },
   });
-  return result;
+  return await result.json();
 }
 
 /**
@@ -208,18 +199,14 @@ async function sendNewMovie({ movie }) {
  * @returns {Promise<Sound>}
  */
 async function sendNewSound({ sound }) {
-  const result = await $.ajax({
+  const result = await fetch('/api/v1/sounds', {
     method: 'POST',
-    url: '/api/v1/sounds',
-    dataType: 'json',
-    data: sound,
-    processData: false,
-    async: true,
+    body: sound,
     headers: {
       'Content-Type': 'application/octet-stream',
     },
   });
-  return result;
+  return await result.json();
 }
 
 /**
@@ -228,18 +215,14 @@ async function sendNewSound({ sound }) {
  * @returns {Promise<Image>}
  */
 async function sendNewImage({ image }) {
-  const result = await $.ajax({
+  const result = await fetch('/api/v1/images', {
     method: 'POST',
-    url: '/api/v1/images',
-    dataType: 'json',
-    data: image,
-    processData: false,
-    async: true,
+    body: image,
     headers: {
       'Content-Type': 'application/octet-stream',
     },
   });
-  return result;
+  return await result.json();
 }
 
 /**
@@ -260,18 +243,18 @@ async function sendNewPost({ movie, sound, images, text }) {
 
   const uint8Array = new TextEncoder().encode(JSON.stringify(payload));
   const compressed = gzip(uint8Array);
-  const result = await $.ajax({
+  const res = await fetch('/api/v1/posts', {
     method: 'POST',
-    url: '/api/v1/posts',
-    dataType: 'json',
-    data: compressed,
-    processData: false,
-    async: true,
+    body: compressed,
     headers: {
       'Content-Type': 'application/json',
       'Content-Encoding': 'gzip',
     },
+    body: compressed,
   });
+
+  const result = res.json();
+
   return result;
 }
 

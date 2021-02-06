@@ -10,11 +10,10 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
 const config = {
-  mode: 'none',
+  mode: process.env.NODE_ENV,
   entry: [
     'core-js',
     'regenerator-runtime/runtime',
-    'jquery-binarytransport',
     path.resolve(SRC_PATH, './index.css'),
     path.resolve(SRC_PATH, './index.jsx'),
   ],
@@ -38,6 +37,7 @@ const config = {
       },
       {
         test: /\.css$/i,
+        exclude: /node_modules/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader', options: { url: false } },
@@ -49,12 +49,10 @@ const config = {
   plugins: [
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
-      $: 'jquery',
-      'window.jQuery': 'jquery',
       AudioContext: ['standardized-audio-context', 'AudioContext'],
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
+      NODE_ENV: 'production',
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/main.css',

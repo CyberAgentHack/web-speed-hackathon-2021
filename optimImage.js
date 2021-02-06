@@ -8,12 +8,11 @@ const imageminWebp = require('imagemin-webp');
     destination: 'destination_dir_profile',
     plugins: [
       imageminWebp({
-        quality: 30,
-        size: 1,
-        // resize: {
-        //   width: 2080,
-        //   height: 0,
-        // },
+        quality: 100,
+        resize: {
+          width: 150,
+          height: 0,
+        },
         method: 6,
       }),
     ],

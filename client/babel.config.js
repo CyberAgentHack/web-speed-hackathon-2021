@@ -5,13 +5,15 @@ module.exports = {
       {
         corejs: '3',
         useBuiltIns: false,
-        modules: 'commonjs',
+        targets: {
+          esmodules: true,
+        },
       },
     ],
     [
       '@babel/preset-react',
       {
-        development: true,
+        development: process.env.NODE_ENV === 'production' ? false : true,
       },
     ],
   ],
