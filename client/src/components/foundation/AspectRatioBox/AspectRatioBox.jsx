@@ -24,8 +24,9 @@ const AspectRatioBox = ({ aspectWidth, aspectHeight, children }) => {
     }
 
     // ウィンドウサイズが変わるたびに計算する
-    window.addEventListener('resize', calcStyle, { passive: false });
-    setTimeout(() => calcStyle(), 250);
+    window.addEventListener('resize', calcStyle, { passive: true });
+
+    calcStyle();
 
     return () => window.removeEventListener('resize', calcStyle);
   }, []);

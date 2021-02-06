@@ -21,7 +21,30 @@ async function convertMovie(buffer, options) {
 
   ffmpeg.FS('writeFile', 'file', new Uint8Array(buffer));
 
-  await ffmpeg.run(...['-i', 'file', '-t', '5', '-r', '10', '-vf', `crop=${cropOptions}`, '-an', exportFile]);
+  await ffmpeg.run(
+    ...[
+      '-i',
+      'file',
+      '-vcodec',
+      'libvpx',
+      '-cpu-used',
+      '-5',
+      '-threads',
+      '8',
+      '-speed',
+      '8',
+      // '-c',
+      // 'vp9',
+      // '-b:v',
+      // '0',
+      // '-crf',
+      // '41',
+      // '-vf',
+      // `crop=${cropOptions}`,
+      // '-an',
+      exportFile,
+    ],
+  );
 
   return ffmpeg.FS('readFile', exportFile);
 }
