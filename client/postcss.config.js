@@ -3,12 +3,12 @@ const postcssPresetEnv = require('postcss-preset-env');
 const tailwindcss = require('tailwindcss');
 
 module.exports = {
-  plugins: [
-    postcssImport(),
-    tailwindcss(),
-    postcssPresetEnv({
-      stage: 3,
-    }),
-  ],
-  map: true,
+    plugins: [
+        postcssImport(),
+        tailwindcss(),
+        postcssPresetEnv({
+            stage: 3,
+        }),
+    ],
+    map: false, // or map: { inline: false },
 };
