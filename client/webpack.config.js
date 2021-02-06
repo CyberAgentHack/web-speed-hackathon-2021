@@ -8,6 +8,8 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
+console.log(process.env.NODE_ENV);
+
 /** @type {import('webpack').Configuration} */
 const config = {
   mode: process.env.NODE_ENV,
