@@ -64,7 +64,6 @@ const config = {
       inject: false,
     }),
   ],
-  devtool: 'inline-source-map',
   devServer: {
     host: '0.0.0.0',
     port: 8080,
