@@ -22,7 +22,7 @@ app.use(bodyParser.raw({ limit: '10mb' }));
 
 app.use((_req, res, next) => {
   res.header({
-    Connection: 'close',
+    Connection: 'keep-alive',
     'Cache-Control': 'max-age=0, no-transform',
   });
   return next();
