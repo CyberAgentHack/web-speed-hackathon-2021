@@ -6,7 +6,7 @@
   "scripts": {
     "analyze": "cross-env NODE_ENV=development webpack --analyze",
     "prebuild": "rimraf ../dist",
-    "build": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "develop": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
@@ -14,7 +14,6 @@
     "classnames": "^2.2.6",
     "core-js": "^3.8.2",
     "fast-average-color": "^6.3.0",
-    "gifler": "github:themadcreator/gifler#v0.3.0",
     "image-size": "^0.9.3",
     "lodash": "^4.17.20",
     "moment": "^2.24.0",
