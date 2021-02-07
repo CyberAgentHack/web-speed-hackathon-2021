@@ -12,7 +12,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 /** @type {import('webpack').Configuration} */
 const config = {
-  mode: 'none',
+  mode: 'production',
   entry: [
     'core-js',
     'regenerator-runtime/runtime',
