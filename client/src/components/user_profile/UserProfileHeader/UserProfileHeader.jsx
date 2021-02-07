@@ -1,5 +1,5 @@
 import FastAverageColor from 'fast-average-color';
-import moment from 'moment';
+// import moment from 'moment';
 import React from 'react';
 
 import { getProfileImagePath } from '../../../utils/get_path';
@@ -29,6 +29,13 @@ const UserProfileHeader = ({ user }) => {
     })();
   }, [user]);
 
+  const time = React.useMemo(() => {
+    var date = new Date(user.createdAt);
+    return (
+      <time dateTime={date.toISOString()}>{`${date.getFullYear()}年${date.getMonth() + 1}月${date.getDay()}日`}</time>
+    );
+  }, [user]);
+
   return (
     <header className="relative">
       <div className="h-32 bg-gray-300" style={{ backgroundColor: averageColor }}></div>
@@ -44,9 +51,12 @@ const UserProfileHeader = ({ user }) => {
             <FontAwesomeIcon iconType="calendar-alt" styleType="regular" />
           </span>
           <span>
+            {/*
             <time dateTime={moment(user.createdAt).toISOString()}>
               {moment(user.createdAt).locale('ja').format('LL')}
             </time>
+            */}
+            {time}
             からサービスを利用しています
           </span>
         </p>

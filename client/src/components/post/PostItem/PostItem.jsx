@@ -1,4 +1,4 @@
-import moment from 'moment';
+// import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,13 @@ import { SoundArea } from '../../post/SoundArea';
  */
 /** @type {React.VFC<Props>} */
 const PostItem = ({ post }) => {
+  const time = React.useMemo(() => {
+    var date = new Date(post.createdAt);
+    return (
+      <time dateTime={date.toISOString()}>{`${date.getFullYear()}年${date.getMonth() + 1}月${date.getDay()}日`}</time>
+    );
+  }, [post]);
+
   return (
     <article className="px-1 sm:px-4">
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
@@ -57,9 +64,12 @@ const PostItem = ({ post }) => {
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
+              {/*
               <time dateTime={moment(post.createdAt).toISOString()}>
                 {moment(post.createdAt).locale('ja').format('LL')}
               </time>
+              */}
+              {time}
             </Link>
           </p>
         </div>

@@ -1,4 +1,4 @@
-import moment from 'moment';
+// import moment from 'moment';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -41,6 +41,13 @@ const TimelineItem = ({ post }) => {
     [post],
   );
 
+  const time = React.useMemo(() => {
+    var date = new Date(post.createdAt);
+    return (
+      <time dateTime={date.toISOString()}>{`${date.getFullYear()}年${date.getMonth() + 1}月${date.getDay()}日`}</time>
+    );
+  }, [post]);
+
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4" onClick={handleClick}>
       <div className="flex pb-4 pt-2 px-2 border-b border-gray-300 sm:px-4">
@@ -62,9 +69,12 @@ const TimelineItem = ({ post }) => {
             </Link>
             <span className="pr-1 text-gray-500">-</span>
             <Link className="pr-1 text-gray-500 hover:underline" to={`/posts/${post.id}`}>
+              {/*
               <time dateTime={moment(post.createdAt).toISOString()}>
                 {moment(post.createdAt).locale('ja').format('LL')}
               </time>
+              */}
+              {time}
             </Link>
           </p>
           <p className="text-gray-800 leading-relaxed">{post.text}</p>
