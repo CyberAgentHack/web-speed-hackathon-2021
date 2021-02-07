@@ -3,7 +3,6 @@ const path = require('path');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -65,7 +64,6 @@ const config = {
       template: path.resolve(SRC_PATH, './index.html'),
       inject: false,
     }),
-    new CompressionPlugin(),
   ],
   optimization: {
     minimize: true,
