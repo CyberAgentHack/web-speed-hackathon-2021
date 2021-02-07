@@ -6,7 +6,7 @@ import { ActiveUserProvider } from './providers/ActiveUserProvider';
 import { ModalTypeProvider } from './providers/ModalTypeProvider';
 import { OnReachBottomProvider } from './providers/OnReachBottomProvider';
 
-window.addEventListener('load', () => {
+
   ReactDOM.render(
     <ActiveUserProvider>
       <ModalTypeProvider>
@@ -17,4 +17,4 @@ window.addEventListener('load', () => {
     </ActiveUserProvider>,
     document.querySelector('#app'),
   );
-});
+
