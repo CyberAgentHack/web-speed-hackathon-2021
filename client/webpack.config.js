@@ -13,8 +13,6 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 const config = {
   mode: 'production',
   entry: [
-    // 'core-js',
-    'regenerator-runtime/runtime',
     'jquery-binarytransport',
     path.resolve(SRC_PATH, './index.css'),
     path.resolve(SRC_PATH, './index.jsx'),
