@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -66,6 +67,14 @@ const config = {
       inject: false,
     }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+      }),
+    ],
+  },
   // devtool: 'inline-source-map',
   devServer: {
     hot: true,
