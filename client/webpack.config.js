@@ -10,7 +10,8 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
 const config = {
-  mode: 'none',
+  // mode: 'none',
+  mode: 'production', // or mode: process.env.NODE_ENV,
   entry: [
     'core-js',
     'regenerator-runtime/runtime',
@@ -38,6 +39,7 @@ const config = {
       },
       {
         test: /\.css$/i,
+        exclude: /node_modules/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader', options: { url: false } },
@@ -64,7 +66,8 @@ const config = {
       inject: false,
     }),
   ],
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
+  devtool: NODE_ENV === 'production' ? false : 'inline-source-map',
   devServer: {
     host: '0.0.0.0',
     port: 8080,

@@ -11,5 +11,13 @@
   },
   "engines": {
     "node": "14.x.x"
+  },
+  "name": "web-speed-hackathon-2021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MasahitoKumada/web-speed-hackathon-2021.git",
+  "author": "Masahito Kumada <5445197440@edu.k.u-tokyo.ac.jp>",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
