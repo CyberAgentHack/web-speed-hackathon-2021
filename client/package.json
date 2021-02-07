@@ -19,7 +19,6 @@
     "jquery": "^3.5.1",
     "jquery-binarytransport": "^1.0.0",
     "lodash": "^4.17.20",
-    "normalize.css": "^8.0.1",
     "pako": "^2.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
