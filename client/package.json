@@ -12,6 +12,7 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "classnames": "^2.2.6",
+    "compression-webpack-plugin": "^7.1.2",
     "fast-average-color": "^6.3.0",
     "image-size": "^0.9.3",
     "jquery": "^3.5.1",
