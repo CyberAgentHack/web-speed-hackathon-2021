@@ -55,7 +55,7 @@ const UserProfileContainer = () => {
     setTimeline((prev) => [...prev, ...timeline10]);
     // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
     setOffset((offset) => offset + LIMIT);
-  }, [allTimeline, offset]);
+  }, [timeline, offset]);
 
   // if (isLoading) {
   //   return (
