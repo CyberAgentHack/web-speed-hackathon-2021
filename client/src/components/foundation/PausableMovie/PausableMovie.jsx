@@ -51,14 +51,9 @@ const PausableMovie = ({ src }) => {
 
   return (
     <button className="group relative block w-full h-full" type="button" onClick={handleClick}>
-      {/* <canvas ref={canvasRef} className="w-full" /> */}
-      {/* {src.includes('.gif') ? (
-        <img src={src} />
-      ) : ( */}
       <video ref={videoRef} autoplay="true" loop="true" muted="true" playsinline="true">
         <source src={src} type="video/webm" />
       </video>
-      {/* )} */}
 
       <div
         className={classNames(
