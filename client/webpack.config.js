@@ -100,14 +100,14 @@ module.exports = (env, argv) => {
       ],
     },
 
-    optimization: {
-      minimize: true,
-      minimizer: [
-        // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-        // `...`,
-        new CssMinimizerPlugin(),
-      ],
-    },
+    // optimization: {
+    //   minimize: true,
+    //   minimizer: [
+    //     // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+    //     // `...`,
+    //     new CssMinimizerPlugin(),
+    //   ],
+    // },
 
     // entry: path.resolve(__dirname, 'src', 'index.jsx'),
     // entry: [

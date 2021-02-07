@@ -1,2 +1,1 @@
-import { TimelineContainer } from './TimelineContainer';
-export default TimelineContainer;
+export { TimelineContainer } from './TimelineContainer';

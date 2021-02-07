@@ -1,2 +1,1 @@
-import { TermContainer } from './TermContainer';
-export default TermContainer;
+export { TermContainer } from './TermContainer';
