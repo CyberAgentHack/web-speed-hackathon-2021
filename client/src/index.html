@@ -4,8 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CAwitter</title>
-    <script defer src="/scripts/main.js"></script>
-    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script defer type="text/javascript" src="/<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %> -->
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/000.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/006.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/010.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/011.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/003.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/bold/013.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/000.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/002.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/006.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/009.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/007.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/010.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/013.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/03.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/014.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/012.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/005.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/016.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/008.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/genei-m-gothic/normal/026.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" rel="stylesheet" type="text/css" href="./main.bundle.css" />
+    <script type="text/javascript" src="./bundle.js" defer></script>
+    <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
   </head>
   <body>
     <div id="app"></div>

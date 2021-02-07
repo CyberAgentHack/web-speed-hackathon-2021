@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './styles/index.css';
+
 import { AppContainer } from './containers/AppContainer';
 import { ActiveUserProvider } from './providers/ActiveUserProvider';
 import { ModalTypeProvider } from './providers/ModalTypeProvider';

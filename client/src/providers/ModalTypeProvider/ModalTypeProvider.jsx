@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 
 import { ModalTypeContext } from '../../contexts/modal_type_context';

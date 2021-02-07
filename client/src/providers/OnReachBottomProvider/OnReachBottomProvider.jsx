@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 
 import { OnReachBottomHandlerContext } from '../../contexts/on_reach_bottom_handler_context';

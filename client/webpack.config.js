@@ -9,69 +9,165 @@ const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
-const config = {
-  mode: process.env.NODE_ENV,
-  entry: [
-    'core-js',
-    'regenerator-runtime/runtime',
-    path.resolve(SRC_PATH, './index.css'),
-    path.resolve(SRC_PATH, './index.jsx'),
-  ],
-  output: {
-    path: DIST_PATH,
-    filename: 'scripts/main.js',
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    fallback: {
-      fs: false,
-      path: false,
+module.exports = (env, argv) => {
+  return {
+    mode: 'production',
+    entry: [path.resolve(SRC_PATH, './index.jsx')],
+    // entry: path.resolve(SRC_PATH, 'index.jsx'),
+    output: {
+      path: DIST_PATH,
+      filename: '[name].bundle.js',
+      // filename: 'bundle.js',
     },
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: [{ loader: 'babel-loader' }],
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      fallback: {
+        fs: false,
+        path: false,
       },
-      {
-        test: /\.css$/i,
-        exclude: /node_modules/,
-        use: [
-          { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { url: false } },
-          { loader: 'postcss-loader' },
-        ],
-      },
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer'],
+        AudioContext: ['standardized-audio-context', 'AudioContext'],
+      }),
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'production',
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].bundle.css',
+        chunkFilename: '[id].css',
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: path.resolve(SRC_PATH, './index.html'),
+        inject: true,
+      }),
     ],
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      Buffer: ['buffer', 'Buffer'],
-      AudioContext: ['standardized-audio-context', 'AudioContext'],
-    }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production',
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'styles/main.css',
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(SRC_PATH, './index.html'),
-      inject: false,
-    }),
-  ],
-  devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
-  devServer: {
-    host: '0.0.0.0',
-    port: 8080,
-    contentBase: [PUBLIC_PATH, UPLOAD_PATH],
-    historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:3000',
+    module: {
+      rules: [
+        {
+          test: /\.(jsx|js)$/,
+          include: SRC_PATH,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      targets: {
+                        browsers: ['last 1 Chrome version'],
+                      },
+                      // "targets": {
+                      //   "node": "12"
+                      // }
+                    },
+                  ],
+                  '@babel/preset-react',
+                ],
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(svg|eot|ttf|woff|woff2)$/,
+          include: PUBLIC_PATH,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'images/[name].[hash].[ext]',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/i,
+          exclude: /node_modules/,
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            { loader: 'css-loader', options: { url: false } },
+            { loader: 'postcss-loader' },
+          ],
+        },
+      ],
     },
-  },
-};
 
-module.exports = config;
+    // entry: path.resolve(__dirname, 'src', 'index.jsx'),
+    // entry: [
+    //   'core-js',
+    //   'regenerator-runtime/runtime',
+    //   path.resolve(SRC_PATH, './index.jsx'),
+    //   path.resolve(SRC_PATH, './index.css'),
+    // ],
+    // output: {
+    //   path: DIST_PATH,
+    //   filename: '[name].bundle.js',
+    // },
+    // optimization: {
+    //   splitChunks: {
+    //     name: 'vendor',
+    //     chunks: 'initial',
+    //   },
+    // },
+    // resolve: {
+    //   extensions: ['.js', '.jsx'],
+    //   fallback: {
+    //     fs: false,
+    //     path: false,
+    //   },
+    // },
+    // module: {
+    //   rules: [
+    //     {
+    //       test: /\.jsx?$/,
+    //       exclude: /node_modules/,
+    //       use: [
+    //         {
+    //           loader: 'babel-loader',
+    //         },
+    //       ],
+    //     },
+    // {
+    //   test: /\.css$/i,
+    //   exclude: /node_modules/,
+    //   use: [
+    //     { loader: MiniCssExtractPlugin.loader },
+    //     { loader: 'css-loader', options: { url: false, modules: true } },
+    //     { loader: 'postcss-loader' },
+    //   ],
+    // },
+    //   ],
+    // },
+    // plugins: [
+    // new webpack.ProvidePlugin({
+    //   Buffer: ['buffer', 'Buffer'],
+    //   AudioContext: ['standardized-audio-context', 'AudioContext'],
+    // }),
+    // new webpack.EnvironmentPlugin({
+    //   NODE_ENV: 'production',
+    // }),
+    //   new MiniCssExtractPlugin({
+    //     filename: 'styles/main.css',
+    //   }),
+    //   new HtmlWebpackPlugin({
+    //     template: path.resolve(SRC_PATH, './index.html'),
+    //     inject: false,
+    //   }),
+    // ],
+    devtool: false,
+    devServer: {
+      host: '0.0.0.0',
+      port: 8080,
+      contentBase: [PUBLIC_PATH, UPLOAD_PATH],
+      historyApiFallback: true,
+      proxy: {
+        '/api': 'http://localhost:3000',
+      },
+    },
+  };
+};

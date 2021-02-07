@@ -11,18 +11,14 @@ const LIMIT = 10;
 const TimelineContainer = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
-  const [allTimeline, setAllTimeline] = React.useState([]);
   const [timeline, setTimeline] = React.useState([]);
 
   const [offset, setOffset] = React.useState(0);
 
   React.useEffect(() => {
     (async () => {
-      const timeline = await fetchTimeline({ limit: LIMIT, offset: offset + LIMIT });
-      setTimeline(timeline);
-
-      // 初回は10件のみ表示する
-      // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      const timeline = await fetchTimeline({ limit: LIMIT, offset: offset });
+      setTimeline((prev) => [...prev, ...timeline]);
       setOffset((offset) => offset + LIMIT);
     })().finally(() => {
       setIsLoading(false);
@@ -34,13 +30,12 @@ const TimelineContainer = () => {
     setIsLoading(true);
     (async () => {
       const timeline = await fetchTimeline({ limit: LIMIT, offset: offset + LIMIT });
-      setTimeline(timeline);
-      // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      setTimeline((prev) => [...prev, ...timeline]);
       setOffset((offset) => offset + LIMIT);
     })().finally(() => {
       setIsLoading(false);
     });
-  }, [allTimeline, offset]);
+  }, [offset]);
 
   if (isLoading) {
     return (
