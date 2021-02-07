@@ -22,6 +22,8 @@ const PausableMovie = ({ src }) => {
 
   const videoRef = React.useRef(null);
 
+  const [blobUrl, setBlobUrl] = React.useState(null);
+
   // React.useEffect(() => {
   //   (async () => {
   //     const data = await fetchBinary({ url: src });
@@ -34,6 +36,13 @@ const PausableMovie = ({ src }) => {
 
   //   return () => animatorRef.current?.stop();
   // }, []);
+  React.useEffect(() => {
+    (async () => {
+      const data = await fetchBinary({ url: src });
+      const blobUrl = URL.createObjectURL(new Blob([data], { type: 'video/mp4' }));
+      setBlobUrl(blobUrl);
+    })();
+  }, [src]);
 
   const [isPlaying, setIsPlaying] = React.useState(true);
 
@@ -52,8 +61,8 @@ const PausableMovie = ({ src }) => {
   return (
     <button className="group relative block w-full h-full" type="button" onClick={handleClick}>
       {/* <canvas ref={canvasRef} className="w-full" /> */}
-      <video ref={videoRef} loop muted autoplay="autoplay">
-        <source src={`.${src}`} type="video/mp4" />
+      <video ref={videoRef} loop muted autoplay="autoplay" preload="none">
+        {blobUrl !== null ? <source src={blobUrl} type="video/mp4" /> : null}
       </video>
       <div
         className={classNames(
