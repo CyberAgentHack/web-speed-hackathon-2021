@@ -21,8 +21,8 @@ const AppContainer = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   React.useEffect(() => {
     (async () => {
-      const user = await fetchActiveUser();
-      setActiveUser(user);
+      //const user = await fetchActiveUser();
+      //setActiveUser(user);
     })().finally(() => {
       setIsLoading(false);
     });
