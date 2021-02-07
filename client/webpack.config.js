@@ -3,6 +3,7 @@ const path = require('path');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -37,7 +38,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        exclude: /node_modules/,
+        exclude: /node_modules/,        
         use: [
           // { loader: MiniCssExtractPlugin.loader },
           { loader: "style-loader" },
@@ -54,9 +55,10 @@ const config = {
       'window.jQuery': 'jquery',
       AudioContext: ['standardized-audio-context', 'AudioContext'],
     }),
+    
     // new webpack.EnvironmentPlugin({
     //   NODE_ENV: 'development',
-    // }),
+    //   }),
     // new MiniCssExtractPlugin({
     //   filename: 'styles/main.css',
     // }),
@@ -64,6 +66,7 @@ const config = {
       template: path.resolve(SRC_PATH, './index.html'),
       inject: false,
     }),
+    new CompressionPlugin(),    
   ],
   optimization: {
     minimize: true,
