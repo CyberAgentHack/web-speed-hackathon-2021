@@ -40,7 +40,8 @@ const config = {
         test: /\.css$/i,
         exclude: /node_modules/,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
+          // { loader: MiniCssExtractPlugin.loader },
+          { loader: "style-loader" },
           { loader: 'css-loader', options: { url: false } },
           { loader: 'postcss-loader' },
         ],
@@ -57,12 +58,12 @@ const config = {
     // new webpack.EnvironmentPlugin({
     //   NODE_ENV: 'development',
     // }),
-    new MiniCssExtractPlugin({
-      filename: 'styles/main.css',
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: 'styles/main.css',
+    // }),
     new HtmlWebpackPlugin({
       template: path.resolve(SRC_PATH, './index.html'),
-      // inject: false,
+      inject: false,
     }),
   ],
   // devtool: 'inline-source-map',
