@@ -9,7 +9,7 @@ import { convertMovie } from '../../converters/convert_movie';
 import { UPLOAD_PATH } from '../../paths';
 
 // 変換した動画の拡張子
-const EXTENSION = 'webm';
+const EXTENSION = 'gif';
 
 const router = Router();
 
