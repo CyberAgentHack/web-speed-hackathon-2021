@@ -9,7 +9,7 @@ async function main() {
 
   // データベースの初期化をします
   await sequelize.sync({
-    force: true,
+    force: false,
     logging: false,
   });
   await insertSeeds();

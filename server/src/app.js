@@ -35,7 +35,7 @@ app.use(bodyParser.raw({ limit: '10mb' }));
 app.use((_req, res, next) => {
   res.header({
     Connection: 'keep-alive',
-    'Cache-Control': 'max-age=0, no-transform',
+    'Cache-Control': 'max-age=31536000',
   });
   return next();
 });
