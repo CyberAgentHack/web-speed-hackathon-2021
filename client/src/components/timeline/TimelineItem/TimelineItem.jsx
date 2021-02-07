@@ -41,35 +41,35 @@ const TimelineItem = ({ post }) => {
     [post],
   );
 
-  const image = React.useMemo(() => {
-    if (post.images?.length > 0) {
-      return (
-        <div className="relative mt-2 w-full">
-          <ImageArea images={post.images} />
-        </div>
-      );
-    }
-  }, [post.image]);
+  // const image = React.useMemo(() => {
+  //   if (post.images?.length > 0) {
+  //     return (
+  //       <div className="relative mt-2 w-full">
+  //         <ImageArea images={post.images} />
+  //       </div>
+  //     );
+  //   }
+  // }, [post.image]);
 
-  const movie = React.useMemo(() => {
-    if (post.movie) {
-      return (
-        <div className="relative mt-2 w-full">
-          <MovieArea movie={post.movie} />
-        </div>
-      );
-    }
-  }, [post.movie]);
+  // const movie = React.useMemo(() => {
+  //   if (post.movie) {
+  //     return (
+  //       <div className="relative mt-2 w-full">
+  //         <MovieArea movie={post.movie} />
+  //       </div>
+  //     );
+  //   }
+  // }, [post.movie]);
 
-  const sound = React.useMemo(() => {
-    if (post.sound) {
-      return (
-        <div className="relative mt-2 w-full">
-          <SoundArea sound={post.sound} />
-        </div>
-      );
-    }
-  }, [post.sound]);
+  // const sound = React.useMemo(() => {
+  //   if (post.sound) {
+  //     return (
+  //       <div className="relative mt-2 w-full">
+  //         <SoundArea sound={post.sound} />
+  //       </div>
+  //     );
+  //   }
+  // }, [post.sound]);
 
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4" onClick={handleClick}>
@@ -98,7 +98,6 @@ const TimelineItem = ({ post }) => {
             </Link>
           </p>
           <p className="text-gray-800 leading-relaxed">{post.text}</p>
-          {/*
           {post.images?.length > 0 ? (
             <div className="relative mt-2 w-full">
               <ImageArea images={post.images} />
@@ -114,12 +113,6 @@ const TimelineItem = ({ post }) => {
               <SoundArea sound={post.sound} />
             </div>
           ) : null}
-          */}
-
-          {image}
-          {movie}
-          {sound}
-          
         </div>
       </div>
     </article>

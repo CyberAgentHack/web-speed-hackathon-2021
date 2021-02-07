@@ -14,7 +14,7 @@ async function convertImage(buffer, options) {
       width: options.size,
       height: options.size,
     })
-    .toFormat(options.extension ?? 'jpeg')
+    .toFormat(options.extension ?? 'webp')
     .toBuffer();
 }
 

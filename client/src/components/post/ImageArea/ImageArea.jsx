@@ -12,31 +12,30 @@ import { CoveredImage } from '../../foundation/CoveredImage';
 
 /** @type {React.VFC<Props>} */
 const ImageArea = ({ images }) => {
-  const imageList = React.useMemo(() => {
-    const list = [];
-    images.map((image, idx) => {
-      list.push(
-        <div
-          key={image.id}
-          // CSS Grid で表示領域を指定する
-          className={classNames('bg-gray-300', {
-            'row-span-1': images.length > 2 && (images.length !== 3 || idx !== 0),
-            'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
-            'col-span-1': images.length !== 1,
-            'col-span-2': images.length === 1,
-          })}
-        >
-          <CoveredImage alt={image.alt} src={getImagePath(image.id)} />
-        </div>,
-      );
-    });
-    return list;
-  }, [images]);
+  // const imageList = React.useMemo(() => {
+  //   const list = [];
+  //   images.map((image, idx) => {
+  //     list.push(
+  //       <div
+  //         key={image.id}
+  //         // CSS Grid で表示領域を指定する
+  //         className={classNames('bg-gray-300', {
+  //           'row-span-1': images.length > 2 && (images.length !== 3 || idx !== 0),
+  //           'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
+  //           'col-span-1': images.length !== 1,
+  //           'col-span-2': images.length === 1,
+  //         })}
+  //       >
+  //         <CoveredImage alt={image.alt} src={getImagePath(image.id)} />
+  //       </div>,
+  //     );
+  //   });
+  //   return list;
+  // }, [images]);
 
   return (
     <AspectRatioBox aspectHeight={9} aspectWidth={16}>
       <div className="grid gap-1 grid-cols-2 grid-rows-2 w-full h-full border border-gray-300 rounded-lg overflow-hidden">
-        {/*
         {images.map((image, idx) => {
           return (
             <div
@@ -53,9 +52,6 @@ const ImageArea = ({ images }) => {
             </div>
           );
         })}
-      */}
-
-      {imageList}
       </div>
     </AspectRatioBox>
   );

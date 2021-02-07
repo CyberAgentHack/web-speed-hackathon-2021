@@ -13,7 +13,7 @@ async function convertMovie(buffer, options) {
     .filter(Boolean)
     .join(',');
 
-  const exportFile = `export.${options.extension ?? 'gif'}`;
+  const exportFile = `export.${options.extension ?? 'webm'}`;
 
   if (ffmpeg.isLoaded() === false) {
     await ffmpeg.load();

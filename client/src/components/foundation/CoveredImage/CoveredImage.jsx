@@ -31,7 +31,7 @@ const CoveredImage = ({ src, alt }) => {
       const { width: imageWidth, height: imageHeight } = sizeOf(Buffer.from(data));
       setImageRatio(imageHeight / imageWidth);
 
-      const blobUrl = URL.createObjectURL(new Blob([data], { type: 'image/jpeg' }));
+      const blobUrl = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));
       setBlobUrl(blobUrl);
     })();
   }, [src]);
