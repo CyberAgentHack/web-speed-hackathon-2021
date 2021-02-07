@@ -23,6 +23,11 @@
     "normalize.css": "^8.0.1",
     "pako": "^2.0.3",
     "regenerator-runtime": "^0.13.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
     "standardized-audio-context": "^25.1.9",
     "tailwindcss": "^2.0.1",
     "wicg-inert": "^3.1.0"
