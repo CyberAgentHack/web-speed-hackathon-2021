@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 
 import { ActiveUserContext } from '../../contexts/active_user_context';
