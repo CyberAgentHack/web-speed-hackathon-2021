@@ -9,7 +9,7 @@ async function fetchBinary({ url }) {
   const result = await $.ajax({
     method: 'GET',
     url,
-    async: false,
+    async: true,
     dataType: 'binary',
     responseType: 'arraybuffer',
   });
@@ -26,7 +26,7 @@ async function fetchPost({ postId }) {
     method: 'GET',
     url: `/api/v1/posts/${postId}`,
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
@@ -51,7 +51,7 @@ async function fetchCommentsByPost({ postId, limit, offset }) {
     method: 'GET',
     url: `/api/v1/posts/${postId}/comments`,
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
@@ -75,7 +75,7 @@ async function fetchTimeline({ limit, offset }) {
     method: 'GET',
     url: `/api/v1/posts?${searchParams}`,
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
@@ -100,7 +100,7 @@ async function fetchTimelineByUser({ userId, limit, offset }) {
     method: 'GET',
     url: `/api/v1/users/${userId}/posts`,
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
@@ -115,7 +115,7 @@ async function fetchUser({ userId }) {
     method: 'GET',
     url: `/api/v1/users/${userId}`,
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
@@ -128,7 +128,7 @@ async function fetchActiveUser() {
     method: 'GET',
     url: '/api/v1/me',
     dataType: 'json',
-    async: false,
+    async: true,
   });
   return result;
 }
