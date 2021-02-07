@@ -18,13 +18,10 @@ const UserProfileHeader = ({ user }) => {
   React.useEffect(() => {
     (async () => {
       const fac = new FastAverageColor();
-
       const image = new Image();
       image.src = getProfileImagePath(user.profileImage.id);
-
       const { rgb } = await fac.getColorAsync(image, { mode: 'precision' });
       setAverageColor(rgb);
-
       fac.destroy();
     })();
   }, [user]);
