@@ -1,4 +1,4 @@
-import { map, zip, mean, chunk, max as lM } from 'lodash';
+import { map, zip, mean, chunk, max as lM } from 'lodash-es';
 import React from 'react';
 
 /**

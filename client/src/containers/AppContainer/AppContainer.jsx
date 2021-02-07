@@ -9,9 +9,12 @@ import { fetchActiveUser } from '../../utils/fetchers';
 import { ModalContainer } from '../ModalContainer';
 import { NotFoundContainer } from '../NotFoundContainer';
 import { PostContainer } from '../PostContainer';
-import { TermContainer } from '../TermContainer';
-import { TimelineContainer } from '../TimelineContainer';
+import TermContainer from '../TermContainer';
+import TimelineContainer from '../TimelineContainer';
 import { UserProfileContainer } from '../UserProfileContainer';
+
+// const TimelineContainer = lazy(() => import('../TimelineContainer'));
+// const TermContainer = lazy(() => import('../TermContainer'));
 
 /** @type {React.VFC} */
 const AppContainer = () => {
@@ -41,7 +44,9 @@ const AppContainer = () => {
       <AppPage onOpenModal={setModalType}>
         <Switch>
           <Route exact path="/">
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
             <TimelineContainer />
+            {/* </Suspense> */}
           </Route>
           <Route exact path="/users/:userId">
             <UserProfileContainer />
@@ -50,7 +55,9 @@ const AppContainer = () => {
             <PostContainer />
           </Route>
           <Route exact path="/terms">
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
             <TermContainer />
+            {/* </Suspense> */}
           </Route>
           <Route path="*">
             <NotFoundContainer />
@@ -59,6 +66,7 @@ const AppContainer = () => {
       </AppPage>
 
       <ModalContainer />
+      {/* </Suspense> */}
     </BrowserRouter>
   );
 };

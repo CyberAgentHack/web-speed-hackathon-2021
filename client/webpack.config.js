@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -17,6 +18,8 @@ module.exports = (env, argv) => {
     output: {
       path: DIST_PATH,
       filename: '[name].bundle.js',
+      // chunkFilename: '[name].bundle.js',
+      // publicPath: path.resolve(__dirname, 'dist'),
       // filename: 'bundle.js',
     },
     resolve: {
@@ -94,6 +97,15 @@ module.exports = (env, argv) => {
             { loader: 'postcss-loader' },
           ],
         },
+      ],
+    },
+
+    optimization: {
+      minimize: true,
+      minimizer: [
+        // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+        // `...`,
+        new CssMinimizerPlugin(),
       ],
     },
 

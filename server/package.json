@@ -2,7 +2,6 @@
   "private": true,
   "name": "@web-speed-hackathon-2021/server",
   "version": "0.0.1",
-  "main": "src/index.js",
   "scripts": {
     "build": "echo noop",
     "prestart": "npm-run-all prestart:clean prestart:init",
