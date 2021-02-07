@@ -17,7 +17,7 @@ const UserProfileContainer = () => {
 
   const [user, setUser] = React.useState(null);
 
-  const [allTimeline, setAllTimeline] = React.useState([]);
+  // const [allTimeline, setAllTimeline] = React.useState([]);
   const [timeline, setTimeline] = React.useState([]);
 
   const [offset, setOffset] = React.useState(0);
@@ -28,15 +28,16 @@ const UserProfileContainer = () => {
       const user = await fetchUser({ userId });
       setUser(user);
 
-      const allTimeline = await fetchTimelineByUser({
+      const timeline10 = await fetchTimelineByUser({
         userId,
-        limit: undefined,
+        limit: LIMIT,
         offset: undefined,
       });
-      setAllTimeline(allTimeline);
+      // setAllTimeline(allTimeline);
 
       // 初回は10件のみ表示する
-      setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+      setTimeline((prev) => [...prev, ...timeline10]);
       setOffset((offset) => offset + LIMIT);
     })().finally(() => {
       setIsLoading(false);
@@ -44,8 +45,15 @@ const UserProfileContainer = () => {
   }, [userId]);
 
   // 画面最下部までスクロールしたときには、10件読み込む
-  useRegisterOnReachBottom(() => {
-    setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
+  useRegisterOnReachBottom(async () => {
+    const timeline10 = await fetchTimelineByUser({
+      userId,
+      limit: LIMIT,
+      offset: offset,
+    });
+
+    setTimeline((prev) => [...prev, ...timeline10]);
+    // setTimeline((prev) => [...prev, ...allTimeline.slice(offset, offset + LIMIT)]);
     setOffset((offset) => offset + LIMIT);
   }, [allTimeline, offset]);
 

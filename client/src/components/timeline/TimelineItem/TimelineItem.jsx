@@ -41,36 +41,6 @@ const TimelineItem = ({ post }) => {
     [post],
   );
 
-  // const image = React.useMemo(() => {
-  //   if (post.images?.length > 0) {
-  //     return (
-  //       <div className="relative mt-2 w-full">
-  //         <ImageArea images={post.images} />
-  //       </div>
-  //     );
-  //   }
-  // }, [post.image]);
-
-  // const movie = React.useMemo(() => {
-  //   if (post.movie) {
-  //     return (
-  //       <div className="relative mt-2 w-full">
-  //         <MovieArea movie={post.movie} />
-  //       </div>
-  //     );
-  //   }
-  // }, [post.movie]);
-
-  // const sound = React.useMemo(() => {
-  //   if (post.sound) {
-  //     return (
-  //       <div className="relative mt-2 w-full">
-  //         <SoundArea sound={post.sound} />
-  //       </div>
-  //     );
-  //   }
-  // }, [post.sound]);
-
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4" onClick={handleClick}>
       <div className="flex pb-4 pt-2 px-2 border-b border-gray-300 sm:px-4">
