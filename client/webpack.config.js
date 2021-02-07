@@ -56,7 +56,7 @@ const config = {
       AudioContext: ['standardized-audio-context', 'AudioContext'],
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
+      NODE_ENV: 'production',
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/main.css',
