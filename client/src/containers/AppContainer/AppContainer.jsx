@@ -1,11 +1,9 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppPage } from '../../components/application/AppPage';
 import { useActiveUser } from '../../hooks/use_active_user';
 import { useModalType } from '../../hooks/use_modal_type';
-import { fetchActiveUser } from '../../utils/fetchers';
 import { ModalContainer } from '../ModalContainer';
 import { NotFoundContainer } from '../NotFoundContainer';
 import { PostContainer } from '../PostContainer';
@@ -29,11 +27,8 @@ const AppContainer = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <Helmet>
-        <title>読込中- CAwitter</title>
-      </Helmet>
-    );
+    document.title = "読込中- CAwitter";
+    return (<></>)
   }
 
   return (
