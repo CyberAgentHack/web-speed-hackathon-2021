@@ -29,22 +29,6 @@ router.use(
 
 router.use(
   serveStatic(CLIENT_DIST_PATH, {
-    etag: false,
-    lastModified: true,
-  }),
-);
-
-router.use(
-  serveStatic(`${CLIENT_DIST_PATH}/scripts`, {
-    cacheControl: true,
-    maxAge: 31536000,
-    etag: false,
-    lastModified: false,
-  })
-)
-
-router.use(
-  serveStatic(`${CLIENT_DIST_PATH}/styles`, {
     cacheControl: true,
     maxAge: 31536000,
     etag: false,
