@@ -70,6 +70,7 @@ const config = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
+        extractComments: true,
       }),
     ],
   },
