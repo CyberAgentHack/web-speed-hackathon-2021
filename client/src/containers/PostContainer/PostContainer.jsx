@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
 import { PostPage } from '../../components/post/PostPage';
@@ -49,10 +48,9 @@ const PostContainer = () => {
   }, [allComments, offset]);
 
   if (isLoading) {
+    document.title = "読込中- CAwitter"
     return (
-      <Helmet>
-        <title>読込中- CAwitter</title>
-      </Helmet>
+      <></>
     );
   }
 
@@ -60,11 +58,9 @@ const PostContainer = () => {
     return <NotFoundContainer />;
   }
 
+  document.title = `${post.user.name} さんのつぶやき- CAwitter`
   return (
     <>
-      <Helmet>
-        <title>{post.user.name} さんのつぶやき- CAwitter</title>
-      </Helmet>
       <PostPage post={post} comments={comments} />
     </>
   );
