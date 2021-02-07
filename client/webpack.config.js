@@ -8,6 +8,8 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 /** @type {import('webpack').Configuration} */
 const config = {
   mode: 'none',
@@ -63,6 +65,7 @@ const config = {
       template: path.resolve(SRC_PATH, './index.html'),
       inject: false,
     }),
+    //new BundleAnalyzerPlugin()
   ],
   devServer: {
     host: '0.0.0.0',
