@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'wicg-inert';
+// import 'wicg-inert';
 
 /**
  * @typedef {object} Props
@@ -19,12 +19,12 @@ const Modal = ({ onClose, children }) => {
   }, []);
 
   // inert 属性を #app に付与して、アプリケーションが操作できないようにする
-  React.useEffect(() => {
-    document.getElementById('app').inert = true;
-    return () => {
-      document.getElementById('app').inert = false;
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   document.getElementById('app').inert = true;
+  //   return () => {
+  //     document.getElementById('app').inert = false;
+  //   };
+  // }, []);
 
   // Escape キーを入力すると、モーダルを閉じることができる
   React.useEffect(() => {

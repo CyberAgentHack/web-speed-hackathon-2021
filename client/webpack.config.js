@@ -77,7 +77,6 @@ const config = {
   },
   // devtool: 'inline-source-map',
   devServer: {
-    hot: true,
     host: '0.0.0.0',
     port: 8080,
     contentBase: [PUBLIC_PATH, UPLOAD_PATH],

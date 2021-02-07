@@ -29,8 +29,7 @@
     "regenerator-runtime": "^0.13.7",
     "standardized-audio-context": "^25.1.9",
     "tailwindcss": "^2.0.1",
-    "terser-webpack-plugin": "^5.1.1",
-    "wicg-inert": "^3.1.0"
+    "terser-webpack-plugin": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
