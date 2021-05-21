@@ -10,6 +10,6 @@
     "start": "yarn workspace @web-speed-hackathon-2021/server start"
   },
   "engines": {
-    "node": "14.x.x"
+    "node": "14.16.0"
   }
 }

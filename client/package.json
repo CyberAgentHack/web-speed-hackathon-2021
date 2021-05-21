@@ -60,7 +60,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "engines": {
-    "node": "14.x.x"
+    "node": "14.16.0"
   },
   "typesync": {
     "ignoreDeps": [
