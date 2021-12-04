@@ -1,11 +1,10 @@
-import http from 'http';
-
+import http2 from 'http2'
 import { app } from './app';
 import { insertSeeds } from './seeds';
 import { sequelize } from './sequelize';
 
 async function main() {
-  const server = http.createServer(app);
+  const server = http2.createServer(app);
 
   // データベースの初期化をします
   await sequelize.sync({
