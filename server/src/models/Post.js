@@ -47,6 +47,10 @@ const Post = sequelize.define(
         { association: 'movie' },
         { association: 'sound' },
       ],
+      order: [
+        ['id', 'DESC'],
+        ['images', 'createdAt', 'ASC'],
+      ],
     },
   },
 );

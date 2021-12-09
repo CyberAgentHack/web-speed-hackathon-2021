@@ -41,6 +41,7 @@ const Comment = sequelize.define(
           include: { association: 'profileImage' },
         },
       ],
+      order: [['id', 'ASC']],
     },
   },
 );
