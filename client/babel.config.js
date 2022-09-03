@@ -5,14 +5,15 @@ module.exports = {
       {
         corejs: '3',
         modules: 'commonjs',
-        useBuiltIns: false,
+        // https://zenn.dev/sa2knight/articles/67f6f5cc4ed5e26e391c
+        useBuiltIns: "usage",
       },
     ],
     [
       '@babel/preset-react',
       {
-        development: true,
+        development: process.env.NODE_ENV === 'development',
       },
     ],
-  ],
+  ],  
 };
